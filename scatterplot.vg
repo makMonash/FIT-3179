@@ -1,0 +1,21 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Relation between Metro Length and Number of Stations",
+    "width": 800,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/makMonash/FIT-3179/main/metro_countries_total.csv"
+    },
+    "mark": "point",
+    "encoding": {
+      "x": {"field": "length", "type": "quantitative", "title": "Metro Length (km)"},
+      "y": {"field": "stations", "type": "quantitative", "title": "Number of Stations"},
+      "color": {"field": "region", "type": "nominal", "title": "Region"},
+      "tooltip": [
+        {"field": "country", "type": "nominal", "title": "Country"},
+        {"field": "length", "type": "quantitative", "title": "Metro Length (km)"},
+        {"field": "stations", "type": "quantitative", "title": "Number of Stations"}
+      ]
+    }
+  }
+  
