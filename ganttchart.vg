@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Metro Projects Gantt Chart",
+  "width": 800,
+  "height": {"step": 25},
+  "data": {
+    "url": "https://raw.githubusercontent.com/makMonash/FIT-3179/main/metro_countries_in_progress.csv"
+  },
+  "mark": {"type": "rect", "tooltip": true},
+  "encoding": {
+    "y": {
+      "field": "name",
+      "title": "Metro Name",
+      "type": "nominal",
+      "sort": "-x"
+    },
+    "x": {
+      "field": "start_construction",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {"labelAngle": 0}
+    },
+    "x2": {
+      "type": "temporal"
+    },
+    "color": {
+      "field": "region",
+      "type": "nominal",
+      "scale": {"scheme": "tableau10"} 
+    }
+  }
+}

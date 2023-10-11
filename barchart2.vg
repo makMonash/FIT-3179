@@ -1,0 +1,34 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Top Metro Systems by Length",
+    "width": "400",
+    "height": "200",
+    "data": {"url": "https://raw.githubusercontent.com/makMonash/FIT-3179/main/metro_countries_cities.csv"},
+    "mark": "bar",
+    "transform": [
+      {
+        "filter": "datum.length_km >6435"
+      },
+      {
+        "window": [{"op": "row_number", "as": "rank"}],
+        "sort": [{"field": "length_km", "order": "descending"}]
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "length_km",
+        "type": "quantitative",
+        "title": "Length (km)"
+      },
+      "y": {
+        "field": "name", 
+        "type": "ordinal",
+        "title": "Metro System",
+        "sort": {"op": "sum", "field": "length_km", "order": "descending"}
+      },
+       "tooltip": [
+        {"field": "name", "type": "nominal", "title": "Metro System"},
+        {"field": "length_km", "type": "quantitative", "title": "Length in km"}
+      ]
+    }
+  }

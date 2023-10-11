@@ -1,0 +1,35 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Top Metro Systems by Annual Ridership",
+    "width": "400",
+    "height": "200",
+    "data": {"url": "https://raw.githubusercontent.com/makMonash/FIT-3179/main/metro_countries_cities.csv"},
+    "mark": "bar",
+    "transform": [
+      {
+        "filter": "datum.annual_ridership_mill > 2100"
+      },
+      {
+        "window": [{"op": "row_number", "as": "rank"}],
+        "sort": [{"field": "annual_ridership_mill", "order": "descending"}]
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "annual_ridership_mill",
+        "type": "quantitative",
+        "title": "Annual Ridership (Millions)"
+      },
+      "y": {
+        "field": "name", 
+        "type": "ordinal",
+        "title": "Metro System",
+        "sort": {"op": "sum", "field": "annual_ridership_mill", "order": "descending"}
+      },
+      "tooltip": [
+        {"field": "name", "type": "nominal", "title": "Metro System"},
+        {"field": "annual_ridership_mill", "type": "quantitative", "title": "Annual Ridership (Millions)"}
+      ]
+    }
+  }
+  
